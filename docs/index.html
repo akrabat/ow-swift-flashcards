@@ -1,13 +1,81 @@
-<!doctype html>
-<html class="no-js" lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="title" content="Flashcards" />
-    <meta name="description" content="Flashcards client." />
-    <title>Flashcards</title>
-</head>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Flashcards!</title>
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="vendor.js"></script>
+    <script src="app.js"></script>
+    <style type="text/css" media="all">
+      body { margin-top: 30px; }
+      h1 a, h1 a:hover, h1 a:focus, h1 a:visited {
+        text-decoration: none;
+        color: #007700;
+      }
+      .templates {display: none;}
+      .card {
+        border: 1px solid #E1E1E1;
+        padding: 5px;
+        text-align: center;
+      }
+      .card hr {
+        width: 80%;
+        margin-bottom: 1rem;
+      }
+      .card button.reveal {
+        height: 25px;
+        line-height: 25px;
+        padding: 0 5px;
+      }
+      .card p {
+        margin-top: 2.5rem;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
 <body>
-    <h1>Flashcards</h1>
+
+    <div class="markup">
+        <div class="container">
+        <div class="row">
+            <div class="one-half column">
+                <h1><a href="/">Flashcards</a></h1>
+            </div>
+        </div>
+        </div>
+        <div class="view-container container">
+
+            <div class="landing-view">
+                <div class="row">
+                    <div class="one-half column">
+                        <!-- <h3>Flashcards</h3> -->
+                        <a href="#card-1" class ="button button-primary">Start Now!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="templates">
+            <div class="card-view">
+                <h3 class="title"></h3>
+                <div class="card one-half column">
+                    <p data-name="front"></p>
+                    <hr>
+                    <button class="reveal button-primary" onclick="$(this).siblings('.answer').show()">Reveal</button>
+                    <div class="answer">
+                        <p data-name="back"></p>
+                        <a class="next button button-primary">Next</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(window).ready(flashcards.appInit)
+    </script>
 </body>
 </html>
