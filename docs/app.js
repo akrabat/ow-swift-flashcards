@@ -75,15 +75,28 @@ flashcards.appInit = function() {
 flashcards.routeTo = function(name) {
     var routes = {
         '#cards': flashcards.cardsView,
-        '#card': flashcards.cardView
+        '#card': flashcards.cardView,
+        '#addcard': flashcards.addCardView
     }
 
     var nameParts = name.split('-')
     var viewFunction = routes[nameParts[0]]
     if (viewFunction) {
         $('.view-container').empty().append(viewFunction(nameParts[1]));
+    } else {
+        $('.view-container').empty().append(flashcards.homeView);
     }
 }
+
+flashcards.addButtonClick = function() {
+    var view = $('.templates .addcard-view').clone()
+    var card = flashcards.extractObject(view.find('form'))
+    flashcards.cards.push(card)
+    console.log(flashcards.cards)
+    flashcards.routeTo("#cards")
+    return false
+}
+
 
 // == Model ==
 
@@ -92,10 +105,25 @@ flashcards.applyObject = function(obj, elem) {
         elem.find('[data-name="' + key + '"]').text(obj[key])
     }
 }
+flashcards.extractObject = function(elem) {
+
+    var card = {}
+    elem.find("[data-name]").each(function(){
+        var key = $(this).data('name');
+        var value = $(this).val();
+        card[key] = value
+    });
+    return card
+}
 
 
 
 // == View ==
+
+flashcards.homeView = function(number) {
+    var view = $('.templates .landing-view').clone()
+    return view
+}
 
 flashcards.cardsView = function() {
     var view = $('.templates .cards-view').clone()
@@ -122,5 +150,13 @@ flashcards.cardView = function(number) {
     flashcards.applyObject(flashcards.cards[number - 1], view)
     view.find('.answer').hide()
     view.find('.next').attr('href','#card-' + (parseInt(number)+1));
+    return view
+}
+
+flashcards.addCardView = function(number) {
+    var view = $('.templates .addcard-view').clone()
+
+    view.find(".add-btn").click(flashcards.addButtonClick)
+    
     return view
 }

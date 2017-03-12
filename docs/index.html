@@ -42,7 +42,7 @@
         <div class="container">
         <div class="row">
             <div class="one-half column">
-                <h1><a href="/">Flashcards</a></h1>
+                <h1><a href="/#">Flashcards</a></h1>
             </div>
         </div>
         </div>
@@ -60,6 +60,16 @@
         </div>
 
         <div class="templates">
+            <div class="landing-view">
+                <div class="row">
+                    <div class="one-half column">
+                        <!-- <h3>Flashcards</h3> -->
+                        <a href="#card-1" class ="button button-primary">Start Now!</a>
+                        <a href="#cards" class ="button button-primary">List all cards</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="card-view">
                 <h3 class="title"></h3>
                 <div class="card one-half column">
@@ -72,15 +82,35 @@
                     </div>
                 </div>
             </div>
+
             <div class="cards-view">
                 <h3 class="title">All cards</h3>
-                <div class="one-half column">
+                <div class="column">
                     <ul class="cards">
                         <li class="card-template"><span data-name="front"></span></li>
                     </ul>
-                    <p><a href="#card-1" class ="button button-primary">Start Now!</a></p>
+                    <p>
+                        <a href="#addcard" class ="button button-primary">Add new card</a>
+                        <a href="/#" class ="button button-primary">Return</a>
+                    </p>
                 </div>
             </div>
+
+            <div class="addcard-view">
+                <h3 class="title">Add new card</h3>
+                <form>
+                    <label>
+                        Front:
+                        <input type="text" data-name="front" name="front" value="">
+                    </label>
+                    <label>
+                        Back:
+                        <input type="text" data-name="back" name="back" value="">
+                    </label>
+                    <button class="button-primary add-btn">Add</button>
+                </form>
+            </div>
+
         </div>
     </div>
 
