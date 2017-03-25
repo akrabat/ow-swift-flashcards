@@ -2,70 +2,10 @@
 
 var flashcards = {}
 
-flashcards.cards = [
-    {
-        "front": "Author of Rogue Genesis",
-        "back": "Ceri London"
-    },
-    {
-        "front": "Author of Shadow Over Avalon",
-        "back": "C.N. Lesley"
-    },
-    {
-        "front": "Author of Kindred",
-        "back": "Octavia E. Butler"
-    },
-    {
-        "front": "Author of Beholder's Eye",
-        "back": "Julie E. Czerneda"
-    },
-    {
-        "front": "Author of Harry Potter and the Philospoher's Stone",
-        "back": "J. K. Rowling"
-    },
-    {
-        "front": "Author of Interview with the Vampire",
-        "back": "Anne Rice"
-    },
-    {
-        "front": "Author of To Kill a Mockingbird",
-        "back": "Harper Lee"
-    },
-    {
-        "front": "Author of The Talented Mr Ripley",
-        "back": "Patricia Highsmith"
-    },
-    {
-        "front": "Author of The Awakening",
-        "back": "Kate Chopin"
-    },
-    {
-        "front": "Author of Middlemarch",
-        "back": "George Eliot"
-    },
-    {
-        "front": "Author of The Dispossessed",
-        "back": "Ursula K. Le Guin"
-    },
-    {
-        "front": "Author of Frankenstein",
-        "back": "Mary Shelly"
-    },
-    {
-        "front": "Author of Starshine",
-        "back": "G.S. Jennsen"
-    },
-    {
-        "front": "Author of The Hunger Games",
-        "back": "Suzanne Collins"
-    },
-    {
-        "front": "Author of Dragonflight",
-        "back": "Anne McCaffrey"
-    }
-]
+flashcards.cards = []
 
 flashcards.appInit = function() {
+    flashcards.fetchAll()
     window.onhashchange = function() {
         flashcards.routeTo(window.location.hash)
     }
@@ -105,6 +45,7 @@ flashcards.applyObject = function(obj, elem) {
         elem.find('[data-name="' + key + '"]').text(obj[key])
     }
 }
+
 flashcards.extractObject = function(elem) {
 
     var card = {}
@@ -113,9 +54,29 @@ flashcards.extractObject = function(elem) {
         var value = $(this).val();
         card[key] = value
     });
+    card["type"] = "card"
+    card["deck"] = "authors"
+
     return card
 }
 
+flashcards.fetchAll = function() {
+    jQuery.ajax({
+        url: "https://openwhisk.ng.bluemix.net/api/v1/experimental/web/19FT_dev/craft/cards2.json",
+        type: "GET",
+
+        contentType: 'application/json; charset=utf-8',
+        success: function(resultData) {
+            $.each( resultData.cards, function( i, item ) {
+                item.id = i
+                flashcards.cards.push(item)
+            });
+        },
+        error : function(jqXHR, textStatus, errorThrown) {
+        },
+        timeout: 120000,
+    });
+}
 
 
 // == View ==
@@ -127,7 +88,6 @@ flashcards.homeView = function(number) {
 
 flashcards.cardsView = function() {
     var view = $('.templates .cards-view').clone()
-
 
     // get template from UL and then remove it from list
     var list = view.find('.cards')
