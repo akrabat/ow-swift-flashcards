@@ -62,7 +62,7 @@ flashcards.extractObject = function(elem) {
 
 flashcards.fetchAll = function() {
     jQuery.ajax({
-        url: "https://openwhisk.ng.bluemix.net/api/v1/experimental/web/19FT_dev/craft/cards2.json",
+        url: "https://openwhisk.ng.bluemix.net/api/v1/experimental/web/19FT_dev/flashcards/listCards.json",
         type: "GET",
 
         contentType: 'application/json; charset=utf-8',
