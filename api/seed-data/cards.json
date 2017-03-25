@@ -1,0 +1,94 @@
+{
+  "docs": [
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of Kindred",
+        "back": "Octavia E. Butler"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of Rogue Genesis",
+        "back": "Ceri London"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of Shadow Over Avalon",
+        "back": "C.N. Lesley"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of Beholder's Eye",
+        "back": "Julie E. Czerneda"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of Harry Potter and the Philospoher's Stone",
+        "back": "J. K. Rowling"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of Interview with the Vampire",
+        "back": "Anne Rice"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of To Kill a Mockingbird",
+        "back": "Harper Lee"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of The Talented Mr Ripley",
+        "back": "Patricia Highsmith"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of The Awakening",
+        "back": "Kate Chopin"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of Middlemarch",
+        "back": "George Eliot"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of The Dispossessed",
+        "back": "Ursula K. Le Guin"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of Frankenstein",
+        "back": "Mary Shelly"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of Starshine",
+        "back": "G.S. Jennsen"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of The Hunger Games",
+        "back": "Suzanne Collins"
+    },
+    {
+        "type": "card",
+        "deck": "authors",
+        "front": "Author of Dragonflight",
+        "back": "Anne McCaffrey"
+    }
+  ]
+}

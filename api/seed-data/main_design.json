@@ -1,0 +1,9 @@
+{
+  "id": "_design/main_design",
+  "views": {
+    "all_cards": {
+      "map" : "function(doc) {  if (doc.type == 'card') { emit(null); } }"
+    }
+  },
+  "language": "javascript"
+}
