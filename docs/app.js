@@ -109,7 +109,12 @@ flashcards.cardView = function(number) {
     view.find('.title').text('Card #' + number)
     flashcards.applyObject(flashcards.cards[number - 1], view)
     view.find('.answer').hide()
-    view.find('.next').attr('href','#card-' + (parseInt(number)+1));
+
+    var next = parseInt(number)+1;
+    if (next > flashcards.cards.length) {
+        next = 1
+    }
+    view.find('.next').attr('href','#card-' + next);
     return view
 }
 
