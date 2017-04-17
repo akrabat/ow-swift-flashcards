@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# docker run --rm --name=compile-ow-swift -it -v "$(pwd):/owexec" compile-ow-swift bash -e -c "
-docker run --rm --name=compile-ow-swift -it -v "$(pwd):/owexec" openwhisk/swift3action bash -ex -c "
+docker run --rm --name=compile-ow-swift -it -v "$(pwd):/owexec" openwhisk/swift3action bash -e -c "
 
 if [ -z \"$1\" ] ; then
     echo 'Error: Missing action name'
@@ -13,12 +12,22 @@ if [ -f \"/owexec/build/$1.zip\" ] ; then
 fi
 
 echo 'Setting up build...'
-cp /owexec/actions/$1/*.swift /swift3Action/spm-build/
+if [ -d "/owexec/actions/$1" ] ; then
+    # directory with this action name exists
+    cp /owexec/actions/$1/*.swift /swift3Action/spm-build/
 
-# action file can be either {action name}.swift or main.swift
-if [ -f \"/swift3Action/spm-build/$1.swift\" ] ; then
-    mv \"/swift3Action/spm-build/$1.swift\" /swift3Action/spm-build/main.swift
+    # action file can be either {action name}.swift or main.swift
+    if [ -f \"/swift3Action/spm-build/$1.swift\" ] ; then
+        mv \"/swift3Action/spm-build/$1.swift\" /swift3Action/spm-build/main.swift
+    fi
+else
+    #action name is a file in the actions directory
+    cp /owexec/actions/$1.swift /swift3Action/spm-build/main.swift
 fi
+
+# pull in common files
+cat /owexec/actions/common/*.swift >> /swift3Action/spm-build/main.swift
+
 # Add in the OW specific bits
 cat /swift3Action/epilogue.swift >> /swift3Action/spm-build/main.swift
 echo '_run_main(mainFunction:main)' >> /swift3Action/spm-build/main.swift

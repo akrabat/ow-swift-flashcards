@@ -1,0 +1,6 @@
+{
+    "settings": {
+        "api_base_url": "https://openwhisk.ng.bluemix.net/api/v1/web/",
+        "couchdb_url": "https://306a7704-dcbd-4f71-849f-9831fe8875bb-bluemix:702265794aaa6061f67baee01e808d4466f42867809b1d62a47f1aff9c87582f@306a7704-dcbd-4f71-849f-9831fe8875bb-bluemix.cloudant.com"
+    }
+}
