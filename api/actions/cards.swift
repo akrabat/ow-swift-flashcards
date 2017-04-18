@@ -1,8 +1,10 @@
 func main(args: [String:Any]) -> [String:Any] {
     var args = args
-    guard let method = args["__ow_method"] as? String,
-          let path = args["__ow_path"] as? String else {
-        return ["statusCode": 500]
+    guard
+        let method = args["__ow_method"] as? String,
+        let path = args["__ow_path"] as? String
+    else {
+        return jsonResponse(["error": "Internal Server Error"], code: 500)
     }
 
     // simple routing - map verb to action name for resource and collection
@@ -19,7 +21,8 @@ func main(args: [String:Any]) -> [String:Any] {
     }
 
     guard let action = verbs[method.lowercased()] else {
-        return ["statusCode": 405]
+        let allowed = Array(verbs.keys).joined(separator: ", ").uppercased()
+        return jsonResponse(["error": "Method not allowed. Must be one of: \(allowed)"], code: 405, headers: ["Allow": allowed])
     }
 
     // invoke action
