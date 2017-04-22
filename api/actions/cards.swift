@@ -4,6 +4,7 @@ func main(args: [String:Any]) -> [String:Any] {
         let method = args["__ow_method"] as? String,
         let path = args["__ow_path"] as? String
     else {
+        print("Error. Could not find either __ow_method or __ow_path in args")
         return jsonResponse(["error": "Internal Server Error"], code: 500)
     }
 
