@@ -2,10 +2,24 @@ func main(args: [String:Any]) -> [String:Any] {
     var args = args
     guard
         let method = args["__ow_method"] as? String,
-        let path = args["__ow_path"] as? String
+        let path = args["__ow_path"] as? String,
+        let headers = args["__ow_headers"] as? [String:Any]
     else {
         print("Error. Could not find either __ow_method or __ow_path in args")
         return jsonResponse(["error": "Internal Server Error"], code: 500)
+    }
+
+    // OPTIONS handling for CORS
+    if method == "options" {
+        let allowedHeaders = headers["access-control-request-headers"] ?? "Content-Type, Authorization, Accept"
+        return [
+            "statusCode": 200,
+            "headers": [
+                "Access-Control-Allow-Methods": "OPTIONS, GET, PUT, DELETE",
+                "Access-Control-Allow-Origin": getSetting("cors-origin"),
+                "Access-Control-Allow-Headers": allowedHeaders
+            ],
+        ]
     }
 
     // simple routing - map verb to action name for resource and collection

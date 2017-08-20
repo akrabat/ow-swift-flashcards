@@ -16,7 +16,7 @@ update: cards getCollection getCard addCard updateCard deleteCard
 # ------------------------------------------------------------------------------
 # Build targets
 cards: build/cards.zip
-	wsk action update $(PACKAGE)/cards build/cards.zip --kind swift:3.1.1 --web true
+	wsk action update $(PACKAGE)/cards build/cards.zip --kind swift:3.1.1 --web true -a web-custom-options true
 
 build/cards.zip: actions/cards.swift actions/common/*.swift
 	./compile.sh cards
@@ -90,3 +90,12 @@ setup:
 
 clean:
 	rm -rf build/*.zip
+
+remove-actions-and-package:
+	wsk action delete $(PACKAGE)/cards && \
+	wsk action delete $(PACKAGE)/getCollection && \
+	wsk action delete $(PACKAGE)/getCard && \
+	wsk action delete $(PACKAGE)/addCard && \
+	wsk action delete $(PACKAGE)/updateCard && \
+	wsk action delete $(PACKAGE)/deleteCard && \
+	wsk package delete $(PACKAGE)

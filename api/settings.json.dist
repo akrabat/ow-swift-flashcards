@@ -4,6 +4,7 @@ For Bluemix:
 
 {
     "settings": {
+        "cors-origin": "*",
         "api_base_url": "https://openwhisk.ng.bluemix.net/api/v1/web/",
         "couchdb_url": "https://xxx-bluemix:yyy@zzz-bluemix.cloudant.com"
     }
@@ -13,6 +14,7 @@ For a local copy of OpenWhisk in the Vagrant VM:
 
 {
     "settings": {
+        "cors-origin": "*",
         "api_base_url": "https://192.168.33.13/api/v1/web",
         "couchdb_url": "http://whisk_admin:some_passw0rd@172.17.0.1:5984"
     }
