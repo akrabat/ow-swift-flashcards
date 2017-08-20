@@ -64,6 +64,7 @@ flashcards.fetchAll = function() {
     jQuery.ajax({
         url: "https://openwhisk.ng.bluemix.net/api/v1/web/19FT_live/flashcards/cards",
         type: "GET",
+        headers: { 'X-Clacks-Overhead': 'GNU Terry Pratchett' }
 
         contentType: 'application/json; charset=utf-8',
         success: function(resultData) {
