@@ -16,37 +16,37 @@ update: cards getCollection getCard addCard updateCard deleteCard
 # ------------------------------------------------------------------------------
 # Build targets
 cards: build/cards.zip
-	wsk action update $(PACKAGE)/cards build/cards.zip --kind swift:3 --web true
+	wsk action update $(PACKAGE)/cards build/cards.zip --kind swift:3.1.1 --web true
 
 build/cards.zip: actions/cards.swift actions/common/*.swift
 	./compile.sh cards
 
 getCollection: build/getCollection.zip
-	wsk action update $(PACKAGE)/getCollection build/getCollection.zip --kind swift:3
+	wsk action update $(PACKAGE)/getCollection build/getCollection.zip --kind swift:3.1.1
 
 build/getCollection.zip: actions/getCollection.swift actions/common/*.swift
 	./compile.sh getCollection
 
 getCard: build/getCard.zip
-	wsk action update $(PACKAGE)/getCard build/getCard.zip --kind swift:3
+	wsk action update $(PACKAGE)/getCard build/getCard.zip --kind swift:3.1.1
 
 build/getCard.zip: actions/getCard.swift actions/common/*.swift
 	./compile.sh getCard
 
 addCard: build/addCard.zip
-	wsk action update $(PACKAGE)/addCard build/addCard.zip --kind swift:3
+	wsk action update $(PACKAGE)/addCard build/addCard.zip --kind swift:3.1.1
 
 build/addCard.zip: actions/addCard.swift actions/common/*.swift
 	./compile.sh addCard
 
 updateCard: build/updateCard.zip
-	wsk action update $(PACKAGE)/updateCard build/updateCard.zip --kind swift:3
+	wsk action update $(PACKAGE)/updateCard build/updateCard.zip --kind swift:3.1.1
 
 build/updateCard.zip: actions/updateCard.swift actions/common/*.swift
 	./compile.sh updateCard
 
 deleteCard: build/deleteCard.zip
-	wsk action update $(PACKAGE)/deleteCard build/deleteCard.zip --kind swift:3
+	wsk action update $(PACKAGE)/deleteCard build/deleteCard.zip --kind swift:3.1.1
 
 build/deleteCard.zip: actions/deleteCard.swift actions/common/*.swift
 	./compile.sh deleteCard
@@ -57,7 +57,7 @@ build/deleteCard.zip: actions/deleteCard.swift actions/common/*.swift
 
 
 # listCards: build/listCards.zip
-# 	wsk action update $(PACKAGE)/listCards build/listCards.zip --kind swift:3 --web true
+# 	wsk action update $(PACKAGE)/listCards build/listCards.zip --kind swift:3.1.1 --web true
 
 # build/listCards.zip: actions/listCards/*.swift
 # 	./compile.sh listCards
