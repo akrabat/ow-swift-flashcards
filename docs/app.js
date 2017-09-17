@@ -68,8 +68,6 @@ flashcards.fetchAll = function() {
             'Accept': 'application/json',
             // 'X-Clacks-Overhead': 'GNU Terry Pratchett'
         },
-
-        contentType: 'application/json; charset=utf-8',
         success: function(resultData) {
             $.each( resultData.cards, function( i, item ) {
                 item.id = i
