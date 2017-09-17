@@ -28,5 +28,6 @@ do
     
     wsk action update $PACKAGE/$ACTION_NAME $ZIP_FILE --kind swift:3.1.1 \
       --web true \
+      -a web-custom-options true \
       --annotation git_hash "$GIT_HASH"
 done
